@@ -1,17 +1,20 @@
 #!/bin/bash
-# ./scripts/llava_instruct_1.5.yaml \
-# /group/ossmodelzoo/zhenhliu/llava_instruct_1.5/coco118k_stage1.5_finetune_w_prompt.json
+# /group/ossmodelzoo/zhenhliu/capsfusion/ 
+# /group/ossmodelzoo/zhenhliu/capsfusion/1_chat.json
+# /group/ossmodelzoo/zhenhliu/capsfusion/1_images/
+# /group/ossmodelzoo/zhenhliu/huggingface/llava-pretrain/blip_laion_cc_sbu_558k.json
+
 PYTHONPATH=./ torchrun --nproc_per_node 8 \
     llava/train/train_mem.py \
-    --deepspeed ./scripts/zero3.json \
-    --model_name_or_path /workspace/checkpoints/vlora-qwen2.5-3B-sft-sum-bs128/ \
+    --deepspeed ./scripts/zero2.json \
+    --model_name_or_path /group/ossdphi_algo_scratch_12/zhenhliu/models/qwen2.5-3B-Instruct/ \
     --version qwen_2 \
-    --data_path ./scripts/llava_instruct_1.5.yaml \
-    --image_folder /group/ossmodelzoo/zhenhliu/Images/ \
+    --data_path /group/ossmodelzoo/zhenhliu/capsfusion/1_chat.json \
+    --image_folder /group/ossmodelzoo/zhenhliu/capsfusion/1_images/ \
     --vision_tower /workspace/models/siglip-so400m-patch14-384 \
-    --pretrain_mm_mlp_adapter /workspace/checkpoints/vlora-qwen2.5-3B-pretrain-blip-512-sum/mm_projector.bin \
     --mm_projector_type vlora \
-    --tune_vision_tower True \
+    --tune_mm_mlp_adapter True \
+    --tune_vision_tower False \
     --mm_vision_select_layer -2 \
     --mm_use_im_start_end False \
     --mm_use_im_patch_token False \
@@ -20,28 +23,27 @@ PYTHONPATH=./ torchrun --nproc_per_node 8 \
     --group_by_modality_length True \
     --attn_implementation "flash_attention_2" \
     --bf16 True \
-    --output_dir /workspace/checkpoints/vlora-qwen2.5-3B-sft-sum-bs128-2 \
+    --output_dir /workspace/checkpoints/vlora-qwen2.5-3B-pretrain-1-512-sum \
     --num_train_epochs 1 \
-    --per_device_train_batch_size 4 \
+    --per_device_train_batch_size 64 \
     --per_device_eval_batch_size 4 \
-    --gradient_accumulation_steps 4 \
+    --gradient_accumulation_steps 1 \
     --evaluation_strategy "no" \
     --save_strategy "steps" \
     --save_steps 10000 \
-    --save_total_limit 10 \
-    --learning_rate 2e-5 \
-    --vision_tower_lr 2e-6 \
+    --save_total_limit 20 \
+    --learning_rate 5e-5 \
     --weight_decay 0. \
     --warmup_ratio 0.03 \
     --lr_scheduler_type "cosine" \
     --logging_steps 1 \
-    --model_max_length 4096 \
+    --model_max_length 32768 \
     --gradient_checkpointing True \
     --dataloader_num_workers 8 \
     --dataloader_pin_memory True \
     --lazy_preprocess True \
     --report_to wandb \
-    --run_name vlora-qwen2.5-3b-sft-sum-bs128-2 \
+    --run_name vlora-qwen2.5-3B-pretrain-blip-1-512-sum \
     --vlora_dim 512 \
     --vlora_depth 8 \
     --vlora_visual_dim 1152 \

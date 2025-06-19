@@ -1,0 +1,15 @@
+datasets:
+    - json_path: /group/ossmodelzoo/zhenhliu/llava_instruct_1.5/blip558k_stage1.5_finetune_w_prompt.json
+      sampling_strategy: all
+    - json_path: /group/ossmodelzoo/zhenhliu/llava_instruct_1.5/coco118k_stage1.5_finetune_w_prompt.json
+      sampling_strategy: all
+    - json_path: /group/ossmodelzoo/zhenhliu/llava_instruct_1.5/cc3m_recap_data_prompt_v2.json
+      sampling_strategy: all
+    - json_path: /group/ossmodelzoo/zhenhliu/llava_instruct_1.5/ureader_tr_processed.json
+      sampling_strategy: all
+    - json_path: /group/ossmodelzoo/zhenhliu/llava_instruct_1.5/evol_instruct_processed.json
+      sampling_strategy: all
+    - json_path: /group/ossmodelzoo/zhenhliu/llava_instruct_1.5/synthdog_zh_processed.json
+      sampling_strategy: all
+    - json_path: /group/ossmodelzoo/zhenhliu/llava_instruct_1.5/synthdog_en_processed.json
+      sampling_strategy: all  
