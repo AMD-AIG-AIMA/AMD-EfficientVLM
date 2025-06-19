@@ -1,23 +1,6 @@
-# Introducing the First AMD Efficient VLM (Vision-Language Model): AMD-EVLM
+# Introducing the AMD-EfficientVLM (Vision-Language Model):
 
-Core Contributors: Zhenhua Liu, Xuanwu Yin, Dong Li, Barsoum Emad
-
-License Copyright (c) 2025 Advanced Micro Devices, Inc. All Rights Reserved.
-
-⚡️ This repository provides training recipes for the AMD efficient vision-language models, which are designed for high performance and efficiency. The training process includes three key steps:
-
-Pre-training, Finetuing and Supervised Finetuning: We use a LORA-like method to compress and accelerate the popular vision-language model LLaVA-OneVision, achieving a competitive performance with only about only 1/6 FLOPs.
-
-This implementation is released to promote further research and innovation in the field of efficient vision-language models, optimized for AMD Instinct GPUs.
-
-
-We trained the models on a cluster of AMD Instinct<sup>TM</sup> MI250 GPUs and achieved a comparable performane with much less computation costs.
-
-|Models|GFLOPs|MMBench|MME|MMMU|ScienceQA|TextVQA|MMVet|
-|:-|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-|Ivy-VL|2.2x10^4|82.6|1951|46.7 |97.3|76.48|44.12|
-|Ours|0.37x10^4|82.4| 1943 |46.2 |97.1 |76.27 |43.54|
-
+⚡️ This repository provides training recipes for the AMD efficient vision-language models, which are designed for high performance and efficiency. 
 
 ## Getting Started 
 
