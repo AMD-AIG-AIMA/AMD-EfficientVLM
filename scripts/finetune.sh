@@ -1,6 +1,3 @@
-#!/bin/bash
-# ./scripts/llava_instruct_1.5.yaml \
-# /group/ossmodelzoo/zhenhliu/llava_instruct_1.5/coco118k_stage1.5_finetune_w_prompt.json
 PYTHONPATH=./ torchrun --nproc_per_node 8 \
     llava/train/train_mem.py \
     --deepspeed ./scripts/zero3.json \
