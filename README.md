@@ -1,4 +1,4 @@
-# Introducing the AMD-EfficientVLM (Vision-Language Model):
+# Introducing the AMD-EfficientVLM (Vision-Language Model)
 
 ⚡️ This repository provides training recipes for the AMD efficient vision-language models, which are designed to improve the inference efficiency of VLM. 
 
