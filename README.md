@@ -17,17 +17,17 @@ You can follow to [LLaVA-OneVision](https://github.com/LLaVA-VL/LLaVA-NeXT/tree/
 
 ### Pre-training
 
-You can run pre-training using scripts/pretrain.sh. Please set the data_path and image_folder according to your data path. 
+You can run pre-training using scripts/pretrain.sh. The mm projector is pre-trianing during this stage. Please set the data_path and image_folder according to your data path. 
 ```
 bash scripts/pretrain.sh
 ```
 
-### Finetuning
+### Training
 
-You can use follwing command to start fine-tuning the model. The checkpoint will be saved at checkpoints/EVLM-3b-finetune.
+You can use follwing command to start training the model.
 
 ```
-bash scripts/finetune.sh
+bash scripts/train.sh
 ```
 
 ### Supervised Fine-tuning
@@ -42,7 +42,7 @@ bash scripts/sft.sh
 We provide a simple script for inference with a single image input.
 
 ```
-python3 llava/test_generate.py --model_path ./checkpoints/vlora-7b-sft --image_path ./images/dino.png --question "Please describe this image."
+python3 llava/test_generate.py --model_path ./checkpoints/ --image_path ./images/dino.png --question "Please describe this image."
 ```
 
 
